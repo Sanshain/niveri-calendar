@@ -1,8 +1,12 @@
-# preact-rollup bolilerplate
+# niveri-calendar
+
+Once on codepen I came across a [simple calendar](https://codepen.io/m4r1vs/pen/MOOxyE) with an amazing design and couldn't pass it by. Its author is [Marius Niveri](https://github.com/m4r1vs/). He didn't post this code either on github or npm. But he inspired me so much that I decided to do it. And so that the author does not sink into obscurity, I named him in his honor
+
+This is the simplest calendar for react/react projects, which weighs only 5 kb after minification, but looks very cool. But if you need a full-fledged calendar with the ability to restrict the user in the choice of dates and other configurable things, it probably won't suit you
 
 
 
-## Features: 
+## About the base template: 
 
 - Usage styled components via [`goober`](https://www.npmjs.com/package/goober) with minimal runtime (look [`App.jsx`](https://github.com/Sanshain/preact-boilerplate/blob/main/source/App.jsx)) 
 - Isolated styles via postcss modules (like `react-css-modules`)
@@ -14,34 +18,10 @@
 
 ## Setup
 
-1. Clone the repo
 ```sh
-git clone https://github.com/Sanshain/preact-boilerplate.git && cd project-templates
+npm i Sanshain/niveri-calendar.git
 ```
 
-2. Install the deps
-```sh
-npm i
-```
-
-3. Compile
-```sh
-rollup -c
-```
-
-
-## Prerender (SSR) usage:
-
-- Change `options.prerender` to `true` 
-- Apply `rollup -c` => will created init.js inside `realese` folder
-- apply `node init` => will created `prerender.html` in the same folder
-
-
-## CLI
-
-### `npm start`
-
-Launch a dev server at `localhost:3000` and reload on file changes.
 
 ### `npm run build`
 

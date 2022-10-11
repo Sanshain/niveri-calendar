@@ -1,0 +1,382 @@
+.title {
+  color: #7a00ba;
+  font-size: 30px;
+}
+:root {
+    --primary-color             : #673ab7;
+    --primary-color-light       : #9a67ea;
+    --primary-color-dark        : #320b86;
+    --secondary-color           : #ffc400;
+    --secondary-color-light     : #fff64f;
+    --secondary-color-dark      : #c79400;
+    --primary-text-color-dark   : rgba(0, 0, 0, .87);
+    --secondary-text-color-dark : rgba(0, 0, 0, .57);
+    --disabled-text-color-dark  : rgba(0, 0, 0, .13);
+    --primary-text-color-light  : rgba(255, 255, 255, .87);
+    --secondary-text-color-light: rgba(255, 255, 255, .57);
+    --disabled-text-color-light : rgba(255, 255, 255, .13);
+    --font-stack                : "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --primary-card-color        : #fff;
+    --primary-background-color  : #f2f2f2;
+    --box-shadow-lvl-1          : 0 1px 3px rgba(0, 0, 0, 0.12),
+        0 1px 2px rgba(0, 0, 0, 0.24);
+    --box-shadow-lvl-2: 0 3px 6px rgba(0, 0, 0, 0.16),
+        0 3px 6px rgba(0, 0, 0, 0.23);
+    --box-shadow-lvl-3: 0 10px 20px rgba(0, 0, 0, 0.19),
+        0 6px 6px rgba(0, 0, 0, 0.23);
+    --box-shadow-lvl-4: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body,
+html {
+    overflow-x      : hidden;
+    font-family     : var(--font-stack);
+    background-color: var(--primary-background-color);
+    color           : var(--primary-text-color-dark);
+    margin          : 0;
+    padding         : 0;
+    position        : absolute;
+    top             : 0;
+    left            : 0;
+    transition      : background-color 0.22s;
+    min-width       : 100vw;
+    min-height      : 100vh;
+}
+
+body.darkTheme,
+html.darkTheme {
+    --primary-text-color-dark   : rgba(255, 255, 255, .87);
+    --secondary-text-color-dark : rgba(255, 255, 255, .57);
+    --disabled-text-color-dark  : rgba(255, 255, 255, .13);
+    --primary-text-color-light  : rgba(0, 0, 0, .87);
+    --secondary-text-color-light: rgba(0, 0, 0, .57);
+    --disabled-text-color-light : rgba(0, 0, 0, .13);
+    --primary-card-color        : #424242;
+    --primary-background-color  : #303030;
+}
+
+body {
+    padding-top: 56px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+a {
+    text-decoration: none;
+    font-weight    : 700;
+    color          : inherit;
+}
+
+a:hover,
+a:focus {
+    color          : var(--secondary-color-dark);
+    outline        : none;
+    text-decoration: underline;
+}
+
+main,
+article {
+    transition      : background-color 0.22s;
+    background-color: var(--primary-card-color);
+    width           : calc(100% - 32px);
+    height          : auto;
+    box-shadow      : var(--box-shadow-lvl-1);
+    margin          : 16px auto;
+    max-width       : 700px;
+    padding         : 8px 16px;
+    border-radius   : 3px;
+    text-align      : center;
+}
+
+main h1,
+article h1 {
+    line-height: 32px;
+    font-size  : 28px;
+    margin     : 0;
+    padding    : 16px 0;
+}
+
+main p,
+article p {
+    text-align   : justify;
+    line-height  : 1.5;
+    margin       : 0;
+    margin-bottom: 16px;
+}
+
+main .infoBox,
+article .infoBox {
+    background   : var(--primary-color);
+    color        : rgba(255, 255, 255, 0.87);
+    padding      : 8px 16px;
+    display      : inline-block;
+    margin-bottom: 16px;
+    border-radius: 3px;
+}
+
+main .infoBox.red,
+article .infoBox.red {
+    background: #ff8a80;
+    color     : rgba(0, 0, 0, 0.87);
+}
+
+main button,
+article button {
+    cursor       : pointer;
+    appearance   : none;
+    background   : transparent;
+    border       : none;
+    font-size    : 16px;
+    line-height  : 1;
+    padding      : 8px 16px;
+    border-radius: 3px;
+    color        : var(--primary-text-color);
+    transition   : background 0.13s;
+    margin-bottom: 16px;
+}
+
+main button:hover,
+main button:focus,
+article button:hover,
+article button:focus {
+    outline   : none;
+    background: var(--disabled-text-color-dark);
+}
+
+article {
+    margin-bottom: 56px;
+}
+
+footer {
+    position  : absolute;
+    bottom    : 16px;
+    width     : 100%;
+    text-align: center;
+}
+
+.datePicker {
+    text-align      : left;
+    background      : var(--primary-card-color);
+    border-radius   : 3px;
+    z-index         : 200;
+    position        : fixed;
+    height          : auto;
+    max-height      : 90vh;
+    width           : 90vw;
+    max-width       : 448px;
+    transform-origin: top left;
+    transition      : transform 0.22s ease-in-out, opacity 0.22s ease-in-out;
+    top             : 50%;
+    left            : 50%;
+    opacity         : 0;
+    transform       : scale(0) translate(-50%, -50%);
+    user-select     : none;
+}
+
+.datePicker.datePicker--opened {
+    opacity  : 1;
+    transform: scale(1) translate(-50%, -50%);
+}
+
+.datePicker .datePicker--titles {
+    border-top-left-radius : 3px;
+    border-top-right-radius: 3px;
+    padding                : 24px;
+    height                 : 100px;
+    background             : var(--primary-color);
+}
+
+.datePicker .datePicker--titles h2,
+.datePicker .datePicker--titles h3 {
+    cursor     : pointer;
+    color      : #fff;
+    line-height: 1;
+    padding    : 0;
+    margin     : 0;
+    font-size  : 32px;
+}
+
+.datePicker .datePicker--titles h3 {
+    color         : rgba(255, 255, 255, 0.57);
+    font-size     : 18px;
+    padding-bottom: 2px;
+}
+
+.datePicker nav {
+    padding: 20px;
+    height : 56px;
+}
+
+.datePicker nav h4 {
+    width      : calc(100% - 60px);
+    text-align : center;
+    display    : inline-block;
+    padding    : 0;
+    font-size  : 14px;
+    line-height: 24px;
+    margin     : 0;
+    position   : relative;
+    top        : -9px;
+    color      : var(--primary-text-color);
+}
+
+.datePicker nav i {
+    cursor       : pointer;
+    color        : var(--secondary-text-color);
+    font-size    : 26px;
+    user-select  : none;
+    border-radius: 50%;
+}
+
+.datePicker nav i:hover {
+    background: var(--disabled-text-color-dark);
+}
+
+.datePicker .datePicker--scroll {
+    overflow-y: auto;
+    max-height: calc(90vh - 56px - 100px);
+}
+
+.datePicker .datePicker--calendar {
+    padding: 0 20px;
+}
+
+.datePicker .datePicker--calendar .datePicker--dayNames {
+    width                : 100%;
+    display              : grid;
+    text-align           : center;
+    grid-template-columns: calc(100% / 7) calc(100% / 7) calc(100% / 7) calc(100% / 7) calc(100% / 7) calc(100% / 7) calc(100% / 7);
+}
+
+.datePicker .datePicker--calendar .datePicker--dayNames span {
+    color      : var(--secondary-text-color-dark);
+    font-size  : 14px;
+    line-height: 42px;
+    display    : inline-grid;
+}
+
+.datePicker .datePicker--calendar .datePicker--days {
+    width                : 100%;
+    display              : grid;
+    text-align           : center;
+    grid-template-columns: calc(100% / 7) calc(100% / 7) calc(100% / 7) calc(100% / 7) calc(100% / 7) calc(100% / 7) calc(100% / 7);
+}
+
+.datePicker .datePicker--calendar .datePicker--days span {
+    color        : var(--primary-text-color-dark);
+    line-height  : 42px;
+    font-size    : 14px;
+    display      : inline-grid;
+    transition   : color 0.22s;
+    height       : 42px;
+    position     : relative;
+    cursor       : pointer;
+    user-select  : none;
+    border-radius: 50%;
+}
+
+.datePicker .datePicker--calendar .datePicker--days span::before {
+    content      : "";
+    position     : absolute;
+    z-index      : -1;
+    height       : 42px;
+    width        : 42px;
+    left         : calc(50% - 21px);
+    background   : var(--primary-color);
+    border-radius: 50%;
+    transition   : transform 0.22s, opacity 0.22s;
+    transform    : scale(0);
+    opacity      : 0;
+}
+
+.datePicker .datePicker--calendar .datePicker--days span[disabled=true] {
+    cursor: unset;
+}
+
+.datePicker .datePicker--calendar .datePicker--days span.datePicker--today {
+    font-weight: 700;
+}
+
+.datePicker .datePicker--calendar .datePicker--days span.datePicker--selected {
+    color: rgba(255, 255, 255, 0.87);
+}
+
+.datePicker .datePicker--calendar .datePicker--days span.datePicker--selected:before {
+    transform: scale(1);
+    opacity  : 1;
+}
+
+.datePicker .datePicker--selectYear {
+    padding   : 0 20px;
+    display   : block;
+    width     : 100%;
+    text-align: center;
+    max-height: 362px;
+}
+
+.datePicker .datePicker--selectYear span {
+    display  : block;
+    width    : 100%;
+    font-size: 24px;
+    margin   : 20px auto;
+    cursor   : pointer;
+}
+
+.datePicker .datePicker--selectYear span.selected {
+    font-size: 42px;
+    color    : var(--primary-color);
+}
+
+.datePicker div.datePicker--actions {
+    width     : 100%;
+    padding   : 8px;
+    text-align: right;
+}
+
+.datePicker div.datePicker--actions button {
+    margin-bottom   : 0;
+    font-size       : 15px;
+    cursor          : pointer;
+    color           : var(--primary-text-color);
+    border          : none;
+    margin-left     : 8px;
+    min-width       : 64px;
+    line-height     : 36px;
+    background-color: transparent;
+    appearance      : none;
+    padding         : 0 16px;
+    border-radius   : 3px;
+    transition      : background-color 0.13s;
+}
+
+.datePicker div.datePicker--actions button:hover,
+.datePicker div.datePicker--actions button:focus {
+    outline         : none;
+    background-color: var(--disabled-text-color-dark);
+}
+
+.datePicker--background {
+    z-index   : 199;
+    position  : fixed;
+    top       : 0;
+    left      : 0;
+    bottom    : 0;
+    right     : 0;
+    background: rgba(0, 0, 0, 0.52);
+    animation : fadeIn 0.22s forwards;
+}

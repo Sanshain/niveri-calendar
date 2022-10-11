@@ -21,7 +21,7 @@ import fs from "fs";
 import path from "path";
 
 
-const dist = 'release'
+const dist = 'build'
 // const production = !process.env.ROLLUP_WATCH
 let production = true;
 const development = !production
@@ -39,11 +39,14 @@ const options = {
 
 
 export default {
-	input: `source/${options.prerender ? options.source.file : 'index'}.js`,
+	input: `./source/DatePicker.jsx`,
 	output: {
-		file: `${dist}/${options.prerender ? options.target.ssr : 'bundle'}.js`,
-		format: 'iife',
-		sourcemap: true
+		file: `${dist}/bundle.esm.js`,
+		// format: 'iife',
+		// format: 'umd',
+		format: 'es',
+		sourcemap: true,
+		name: 'NiveriCalendar',
 	},
 	plugins: [
 		// json(),

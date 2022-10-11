@@ -3,7 +3,7 @@
   "name": "preact-rollup",
   "version": "1.0.0",
   "description": "Preact + Rollup template.",
-  "main": "src/index.js",
+  "main": "./build/bundle.js",
   "author": "Alex",
   "license": "MIT",
   "scripts": {
